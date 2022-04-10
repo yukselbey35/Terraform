@@ -110,6 +110,18 @@ resource "aws_instance" "dev_node" {
 
 
 #Create and bootstrap webserver
+/*
+The remote-exec keyword tells us that this is a remote provisioner, which invokes a script on a
+ remote resource after it is created.
+The provisioner is using the parameters configured in the embedded connection block to 
+connect to the AWS EC2 instance being created.
+The provisioner will then issue the commands configured in the inline block to install
+ Apache webserver on CentOS through the yum package manager, start up the Apache server, 
+ create a single web page called My Test Website With Help From Terraform Provisioner 
+ as an index.html file, and move that file into the data directory of the webserver to be served out 
+ globally.
+*/
+
 /* 
 resource "aws_instance" "webserver" {
   ami                         = data.aws_ssm_parameter.webserver-ami.value
