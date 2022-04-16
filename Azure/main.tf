@@ -64,3 +64,30 @@ resource "azurerm_subnet_network_security_group_association" "tc-sga" {
   subnet_id                 = azurerm_subnet.tc-subnet.id
   network_security_group_id = azurerm_network_security_group.tc-sg.id
 }
+
+resource "azurerm_public_ip" "tc-ip" {
+  name                = "tc-ip"
+  resource_group_name = azurerm_resource_group.tc-rg.name
+  location            = azurerm_resource_group.tc-rg.location
+  allocation_method   = "Dynamic"
+
+  tags = {
+    environment = "dev"
+  }
+}
+
+resource "azurerm_network_interface" "tc-nic" {
+  name                = "tc-nic"
+  location            = azurerm_resource_group.tc-rg.location
+  resource_group_name = azurerm_resource_group.tc-rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.tc-subnet.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.tc-ip.id
+  }
+  tags = {
+    environment = "dev"
+  }
+}
