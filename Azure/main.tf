@@ -91,3 +91,40 @@ resource "azurerm_network_interface" "tc-nic" {
     environment = "dev"
   }
 }
+
+resource "azurerm_linux_virtual_machine" "tc-vm" {
+  name                = "tc-vm"
+  resource_group_name = azurerm_resource_group.tc-rg.name
+  location            = azurerm_resource_group.tc-rg.location
+  size                = "Standard_B1s"
+  admin_username      = "adminuser"
+  network_interface_ids = [
+    azurerm_network_interface.tc-nic.id,
+  ]
+  # To SSH the vm => ssh -i ~/.ssh/namekey adminuser@publicip  
+  #  To SSH the vm => ssh -i ~/.ssh/tcazurekey adminuser@publicip  
+  admin_ssh_key {
+    username   = "adminuser"
+    public_key = file("~/.ssh/tcazurekey.pub")
+  }
+
+  #to bootstrap our instance and install the docker engine. 
+  #This customdata allow us to have a Linux VM instance deployed
+  #with docker ready to go for all of our development needs. 
+  custom_data = filebase64("customdata.tpl")
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
+
+  tags = {
+    environment = "dev"
+  }
+}

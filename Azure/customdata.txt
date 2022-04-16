@@ -1,0 +1,3 @@
+to bootstrap our instance and install the docker engine. 
+This customdata allow us to have a Linux VM instance deployed
+ with docker ready to go for all of our development needs. 
