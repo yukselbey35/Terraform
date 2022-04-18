@@ -124,7 +124,27 @@ resource "azurerm_linux_virtual_machine" "tc-vm" {
     version   = "latest"
   }
 
+  provisioner "local-exec" {
+    command = templatefile("${var.host_os}-ssh-script.tpl", {
+      hostname     = self.public_ip_address,
+      user         = "adminuser"
+      identityfile = "~/.ssh/tcazurekey"
+    })
+    interpreter = ["Powershell", "-Command"]
+  }
+
+
+
   tags = {
     environment = "dev"
   }
+}
+
+data "azurerm_public_ip" "tc-ip-data" {
+  name                = azurerm_public_ip.tc-ip.name
+  resource_group_name = azurerm_resource_group.tc-rg.name
+}
+
+output "public_ip_address" {
+  value = "${azurerm_linux_virtual_machine.tc-vm.name}: ${data.azurerm_public_ip.tc-ip-data.ip_address}"
 }
