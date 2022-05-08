@@ -22,7 +22,7 @@ variable "IGW_name" {
   description = "Set the IGW"
 }
 #Setting public subnet 1a 
-variable "public_subnet_1a" {
+variable "name_public_subnet_1a" {
   type        = string
   default     = "public_subnet_1a"
   description = "Create subnet 1a"
@@ -61,7 +61,7 @@ variable "availability_zone_private_subnet_1a" {
 
 
 #Setting public subnet 1b 
-variable "public_subnet_1b" {
+variable "name_public_subnet_1b" {
   type        = string
   default     = "public_subnet_1b"
   description = "Create subnet 1b"
@@ -96,4 +96,11 @@ variable "availability_zone_private_subnet_1b" {
   type        = string
   default     = "us-east-1a"
   description = "Set the availability zone"
+}
+
+#  create a VPC routing table
+variable "name_public_RT" {
+  type        = string
+  default     = "public_RT_feature_env"
+  description = "Set the routing table"
 }
