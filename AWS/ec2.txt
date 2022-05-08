@@ -1,0 +1,42 @@
+
+resource "aws_instance" "app_server" {
+  ami           = var.instance_id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = var.instance_name
+  }
+}
+
+
+
+#ADD them to variables.tf
+variable "instance_id" {
+  type        = string
+  default     = "ami-09e67e426f25ce0d7"
+  description = "Instance AMI id"
+}
+
+variable "instance_type" {
+  type        = string
+  default     = "t3.micro"
+  description = "Instance Type"
+}
+
+variable "instance_name" {
+  type        = string
+  default     = "DB-Instance"
+  description = "Instance Name"
+}
+
+variable "region_aws" {
+  type        = string
+  default     = "us-east-1"
+  description = "Region"
+}
+
+variable "profile_aws" {
+  type        = string
+  default     = "default"
+  description = "Default Profile"
+} 

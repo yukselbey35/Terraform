@@ -1,0 +1,30 @@
+------Terraform-Commands------
+
+terraform version #find the Terraform version
+
+terraform providers # get provider info used in configuration
+
+terraform -chdir=<path_to/tf> <subcommand> # switch the working directory
+
+terraform init #initilizing with the backend, providers and download provider plugins
+
+terraform fmt #fixing .tf file syntex
+
+terraform validate # checks errors in the .tf file
+
+terraform plan # create an execution plan
+terraform plan -out <plan_name> #output deployment plan
+terraform plan -destroy #output destroy plan
+
+terraform apply # creating resources
+terraform apply -var "instance_name=Batman" #changing name of the instance while running instance
+terraform apply <plan_name> # apply a specific plan
+terraform apply -target-<resource_name> #only apply canges to a targets resource
+
+terraform show # shows what you created currently
+
+terraform state list # listing resource using current state file 
+
+terraform output # gives contain of info which in the output.tf file
+
+terraform destroy #destroy all resourses 
