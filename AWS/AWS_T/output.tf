@@ -1,5 +1,5 @@
 output "vpc" {
-  value       = aws_vpc.main.id
+  value = aws_vpc.main.id
 
 }
 
@@ -9,7 +9,7 @@ output "public_1a" {
 }
 output "public_2a" {
   description = "List of IDs of public subnets"
-  value       = aws_subnet.public_2a.id
+  value       = aws_subnet.public_2b.id
 }
 output "dev_IGW" {
   description = "ID of the internet gateway route"

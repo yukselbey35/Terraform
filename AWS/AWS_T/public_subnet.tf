@@ -1,26 +1,26 @@
 # Set the public subnets and use data aws_availability_zones
 resource "aws_subnet" "public_1a" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_cidr_1a
-  availability_zone = data.aws_availability_zones.available.names[0]
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_cidr_1a
+  availability_zone       = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = true
-  tags = var.tags
+  tags                    = var.tags
 }
 
 resource "aws_subnet" "public_2b" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_cidr_2b
-  availability_zone = data.aws_availability_zones.available.names[1]
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_cidr_2b
+  availability_zone       = data.aws_availability_zones.available.names[1]
   map_public_ip_on_launch = true
-  tags = var.tags
+  tags                    = var.tags
 }
 
 resource "aws_subnet" "public_3c" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_cidr_3c
-  availability_zone = data.aws_availability_zones.available.names[2]
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_cidr_3c
+  availability_zone       = data.aws_availability_zones.available.names[2]
   map_public_ip_on_launch = true
-  tags = var.tags
+  tags                    = var.tags
 }
 # Create the route table
 resource "aws_route_table" "dev_RT" {

@@ -7,5 +7,5 @@ variable "private_cidr_1a" {}
 variable "private_cidr_2b" {}
 variable "private_cidr_3c" {}
 variable "tags" {
-    type = map(string)
+  type = map(string)
 }
