@@ -32,5 +32,5 @@ terraform destroy
 #Get provider names, info used in configuration 
 terraform providers
 
-
-
+# workspace just like kubernetes namespace
+workspace --help to see commands
