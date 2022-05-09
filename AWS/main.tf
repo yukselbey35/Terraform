@@ -67,7 +67,7 @@ resource "aws_subnet" "private_subnet_1b" {
   }
 }
 
-#  create a VPC routing table
+#  create a VPC public routing table
 resource "aws_route_table" "feature_public_RT" {
   vpc_id = aws_vpc.feature_vpc.id
 
@@ -92,3 +92,5 @@ resource "aws_route_table_association" "feature_public1b_assoc" {
   subnet_id      = aws_subnet.public_subnet_1b.id
   route_table_id = aws_route_table.feature_public_RT.id
 }
+
+

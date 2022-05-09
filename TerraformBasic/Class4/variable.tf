@@ -1,5 +1,5 @@
-variable "cidr_block" {}
 variable "region" {}
+variable "cidr_block" {}
 variable "public_cidr1" {}
 variable "public_cidr2" {}
 variable "public_cidr3" {}

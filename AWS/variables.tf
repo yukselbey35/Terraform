@@ -98,7 +98,7 @@ variable "availability_zone_private_subnet_1b" {
   description = "Set the availability zone"
 }
 
-#  create a VPC routing table
+#  create a VPC public routing table
 variable "name_public_RT" {
   type        = string
   default     = "public_RT_feature_env"
