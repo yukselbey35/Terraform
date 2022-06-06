@@ -16,6 +16,8 @@ terraform plan # create an execution plan
 terraform plan -out <plan_name> #output deployment plan
 terraform plan -destroy #output destroy plan
 
+terraform apply -var-file="variables.tfvars"
+
 terraform apply # creating resources
 terraform apply -var "instance_name=Batman" #changing name of the instance while running instance
 terraform apply <plan_name> # apply a specific plan
